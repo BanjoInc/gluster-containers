@@ -1,0 +1,41 @@
+[globals]
+gluster-mgmt = "glusterd"
+glusterd-dir = "/var/lib/glusterd"
+gluster-binary-path = "gluster"
+port = 8080
+metrics-path = "/metrics"
+log-dir = "/var/log"
+log-file = "gluster-exporter.log"
+log-level = "info"
+cache-ttl-in-sec = 0
+#cache-enabled-funcs = [ 'IsLeader', 'LocalPeerID', 'VolumeInfo', 'HealInfo', 'VolumeBrickStatus' ]
+
+[collectors.gluster_ps]
+name = "gluster_ps"
+sync-interval = 5
+disabled = false
+
+[collectors.gluster_brick]
+name = "gluster_brick"
+sync-interval = 5
+disabled = false
+
+[collectors.gluster_volume_counts]
+name = "gluster_volume_counts"
+sync-interval = 5
+disabled = false
+
+[collectors.gluster_volume_heal]
+name = "gluster_volume_heal"
+sync-interval = 5
+disabled = false
+
+[collectors.gluster_volume_profile]
+name = "gluster_volume_profile"
+sync-interval = 5
+disabled = false
+
+[collectors.gluster_brick_status]
+name = "gluster_brick_status"
+sync-interval = 5
+disabled = false

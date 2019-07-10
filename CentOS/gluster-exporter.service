@@ -1,0 +1,10 @@
+[Unit]
+Description=Gluster Prometheus Exporter
+
+[Service]
+ExecStart=/usr/sbin/gluster-exporter --config=/etc/gluster-exporter/gluster-exporter.toml
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+

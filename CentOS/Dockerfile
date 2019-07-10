@@ -32,6 +32,7 @@ yum --setopt=tsflags=nodocs -y install openssh-server  && \
 yum --setopt=tsflags=nodocs -y install openssh-clients  && \
 yum --setopt=tsflags=nodocs -y install rsync  && \
 yum --setopt=tsflags=nodocs -y install tar  && \
+yum --setopt=tsflags=nodocs -y install sudo  && \
 yum --setopt=tsflags=nodocs -y install cronie  && \
 yum --setopt=tsflags=nodocs -y install sudo  && \
 yum --setopt=tsflags=nodocs -y install xfsprogs  && \
@@ -125,6 +126,14 @@ systemctl enable gluster-block-setup.service && \
 systemctl enable gluster-blockd.service && \
 systemctl enable glusterd.service && \
 systemctl enable gluster-check-diskspace.service
+
+# install glusterfs-exporter
+RUN mkdir /etc/gluster-exporter;
+ADD gluster-exporter.toml /etc/gluster-exporter/gluster-exporter.toml
+ADD gluster-exporter /usr/sbin/gluster-exporter
+ADD gluster-exporter.service /etc/systemd/system/gluster-exporter.service
+RUN chmod 644 /etc/systemd/system/gluster-exporter.service && \
+systemctl enable gluster-exporter.service
 
 EXPOSE 2222 111 245 443 24007 2049 8080 6010 6011 6012 38465 38466 38468 38469 49152 49153 49154 49156 49157 49158 49159 49160 49161 49162
 
